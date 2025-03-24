@@ -6,44 +6,59 @@ const cheerio = require("cheerio");
 
 const urls = [
   "https://www.nike.com/gb/t/air-max-1-essential-shoes-bp49vb/FZ5808-105",
-  // "https://www.nike.com/gb/t/air-max-1-shoes-xq6WBc/HM9936-001"
+  "https://www.nike.com/gb/t/air-max-1-shoes-wzTkdh/HF8127-100",
+  // "undefined"
+  
 ];
 
 const fetchHTML = async () => {
-  try {
-    const data = await Promise.all(urls.map((url) => axios.get(url)));
-    const scrapedData = await data.map((d) => d.data);
-    return extractProducts(scrapedData);
-  } catch (error) {
-    throw error;
-  }
+  const htmlData = urls.map(async (url) => {
+    try {
+      const { data } = await axios.get(url);
+      const html = await data;
+      return { data: html, url }
+    } catch (err) {
+      return { data: null, url }
+    }
+  });
+
+  const allHtml = await Promise.all(htmlData);
+
+  return extractProducts(allHtml);
 }
 
 const extractProducts = (htmls) => {
-  const products = [];
-
-  htmls.forEach((html) => {
-    const $ = cheerio.load(html);
-    const price = $("#price-container > [data-testid='currentPrice-container']").first().text().replace("£", "");
-    const product = {
-      title: $("#title-container h1").text(),
-      subtitle: $("#title-container h2").text(),
-      image: $("[data-testid='HeroImg']").attr("src"),
-      price: parseFloat(price)
-    };
-
-    products.push(product);
+  const html = htmls.map(({ data, url }) => {
+    if (data) {
+      const $ = cheerio.load(data);
+      const price = $("#price-container > [data-testid='currentPrice-container']").first().text().replace("£", "");
+      return {
+        title: $("#title-container h1").text(),
+        subtitle: $("#title-container h2").text(),
+        image: $("[data-testid='HeroImg']").attr("src"),
+        price: parseFloat(price),
+        url
+      };
+    } else {
+      return { 
+        title: null,
+        subtitle: null,
+        image: null,
+        price: null,
+        url
+       }
+    }
   })
 
-  return products;
+  return html;
 }
 
 app.get("/api/scrapers", async (req, res) => {
   try {
     const data = await fetchHTML();
     res.json(data);
-  } catch (error) {
-    res.json({ message: `Failed URL: ${error?.config?.url}`})
+  } catch (err) {
+    console.error(err)
   }
 });
 
