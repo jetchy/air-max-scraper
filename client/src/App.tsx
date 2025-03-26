@@ -1,14 +1,14 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import './App.css'
 import Trainers from './pages/Trainers';
+import '@mantine/core/styles.css';
+import Header from './components/Header';
 
-const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
+      <Header />
       <Trainers />
-    </QueryClientProvider>
+    </>
   )
 }
 

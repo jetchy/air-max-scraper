@@ -5,10 +5,15 @@
 
   color-scheme: light dark;
   color: #333;
-  background-color: #FFF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --am-orange: #FF5700; 
+}
+
+body {
+  --mantine-color-body: var(--mantine-color-gray-1);
 }

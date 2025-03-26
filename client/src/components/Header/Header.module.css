@@ -1,0 +1,36 @@
+.wrapper {
+  height: 56px;
+  border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  display: flex;
+  justify-content: center;
+  padding: var(--mantine-spacing-md);
+  align-items: center;
+  background-color: var(--mantine-color-white);
+}
+
+.h1 {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerIcon{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.iconContainer {
+  width: 50px;
+  height: auto;
+
+  svg {
+    width: 100%;
+    fill: var(--am-orange);
+  }
+}
