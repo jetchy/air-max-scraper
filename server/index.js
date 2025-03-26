@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const axios = require("axios");
 const cheerio = require("cheerio");
+const cors = require("cors");
 
 const urls = [
   "https://www.nike.com/gb/t/air-max-1-essential-shoes-bp49vb/FZ5808-105",
@@ -52,6 +53,8 @@ const extractProducts = (htmls) => {
 
   return html;
 }
+
+app.use(cors());
 
 app.get("/api/scrapers", async (req, res) => {
   try {
