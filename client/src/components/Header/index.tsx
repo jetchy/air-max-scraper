@@ -12,9 +12,9 @@ const Header = () => {
             </div>
             <h1 className={classes.h1}>Air Max Tracker</h1>
           </div>
-          {/* <ul>
-            <li>Add Tracker</li>
-          </ul> */}
+          <nav className={classes.mainNav}>
+            <a href="#" className={classes.active}>Add</a>
+          </nav>
         </div>
       </Container>
     </header>

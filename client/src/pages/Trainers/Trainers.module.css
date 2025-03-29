@@ -2,3 +2,16 @@
   display: flex;
   justify-content: center;
 }
+
+.scraperList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin: 16px;
+}
+
+@media screen and (min-width: 1024px) {
+  .scraperList {
+    margin: 16px 0;
+  }
+}

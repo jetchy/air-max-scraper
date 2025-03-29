@@ -7,8 +7,10 @@ const cors = require("cors");
 
 const urls = [
   "https://www.nike.com/gb/t/air-max-1-essential-shoes-bp49vb/FZ5808-105",
+  "https://www.nike.com/gb/t/air-max-1-essential-shoes-bp49vb/FZ5808-105",
   "https://www.nike.com/gb/t/air-max-1-shoes-wzTkdh/HF8127-100",
-  // "undefined"
+  "https://www.nike.com/gb/t/air-max-1-86-og-g-golf-shoes-LsMMlq/DV1403-003",
+  "undefined"
   
 ];
 

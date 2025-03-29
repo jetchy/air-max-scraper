@@ -1,0 +1,35 @@
+.poundSign {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+.scraperBadge {
+  display: flex;
+  align-items: center;
+}
+
+.badgeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.subtitle {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.noImage {
+  width: 238px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noImage svg {
+  width: 50%;
+  height: auto;
+
+}

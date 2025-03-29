@@ -3,4 +3,5 @@ export type TrainersProps = {
     subtitle: string;
     price: number;
     url: string;
+    image?: string;
 } 

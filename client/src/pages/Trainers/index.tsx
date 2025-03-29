@@ -3,6 +3,7 @@ import { fetchAirMaxTrainers } from "../../api";
 import { TrainersProps } from "../../types";
 import Container from "../../components/Container";
 import classes from "./Trainers.module.css";
+import ScraperCard from "../../components/ScraperCard";
 
 const Trainers = () => {
   const {
@@ -15,18 +16,20 @@ const Trainers = () => {
   return (
     <div className={classes.wrapper}>
       <Container>
-        {trainers?.map(({ title, subtitle, price, url }: TrainersProps) => {
-          const urlSplit = url.split("/");
-          return (
-            <ul key={urlSplit[urlSplit.length - 1]}>
-              <li>{title}</li>
-              <li>{subtitle}</li>
-              <li>{price}</li>
-            </ul>
-          );
-        })}
+        <div className={classes.scraperList}>
+          {trainers?.map(({ title, subtitle, price, url, image }: TrainersProps) => {
+            return (
+              <ScraperCard
+                title={title}
+                subtitle={subtitle}
+                price={price}
+                url={url}
+                image={image}
+              />
+            )
+          })}
+        </div>
       </Container>
-
     </div>
   );
 };
